@@ -26,8 +26,7 @@ class RingBuffer(ABC):
 class ListBuffer(RingBuffer):
     def __init__(self, size):
         super().__init__(size)
-        self._buffer = [None for i in range(size)]
-        # self._size = size
+        self._buffer = [ None for i in range(size) ]
         self._first = 0
         self._last = 0
         self._n_elements = 0  # Кол-во элемнтов записанных в буфер
@@ -40,7 +39,6 @@ class ListBuffer(RingBuffer):
 
     def push_element(self, element):
         if self.is_full():
-            # implement removing first element and add new element there
             self._buffer[self._first] = element
             self._first = (self._first + 1) % self._size
             self._last = (self._last + 1) % self._size
@@ -123,4 +121,4 @@ if __name__ == '__main__':
     buffer.push_element('A')
     buffer.get_buffer()
     for i in range(4):
-        buffer.pop_element()  # to show the buffer empty error
+        buffer.pop_element()  # Просто чтобы показать, как ведет себя удаление из пустого массива
